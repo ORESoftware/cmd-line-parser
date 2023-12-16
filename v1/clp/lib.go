@@ -93,9 +93,9 @@ func NewCmdParser() *CmdParser {
 	}
 }
 
-func (c *CmdParser) getInt(_default int64, env string, flags []string, desc string) int64 {
+func (c *CmdParser) GetInt(_default int64, env string, flags []string, desc string) int64 {
 
-	if c.isHelpFlagged() {
+	if c.IsHelpFlagged() {
 
 		c.FlagsHelp = append(c.FlagsHelp, FlagMetaHelp{
 			Type:         "int",
@@ -159,7 +159,7 @@ func (c *CmdParser) getInt(_default int64, env string, flags []string, desc stri
 	return ret
 }
 
-func (c *CmdParser) isHelpFlagged() bool {
+func (c *CmdParser) IsHelpFlagged() bool {
 
 	if v, ok := c.FlagsMap["--help"]; ok {
 		if c.ParseBoolOptimistic(v) {
@@ -174,9 +174,9 @@ func (c *CmdParser) isHelpFlagged() bool {
 	return false
 }
 
-func (c *CmdParser) getBool(_default bool, env string, flags []string, desc string) bool {
+func (c *CmdParser) GetBool(_default bool, env string, flags []string, desc string) bool {
 
-	if c.isHelpFlagged() {
+	if c.IsHelpFlagged() {
 
 		c.FlagsHelp = append(c.FlagsHelp, FlagMetaHelp{
 			Type:         "bool",
@@ -244,7 +244,7 @@ func (c *CmdParser) getBool(_default bool, env string, flags []string, desc stri
 	return ret
 }
 
-func (c *CmdParser) printHelp() {
+func (c *CmdParser) PrintHelp() {
 	Stdout.Info("Help / command line args/env:")
 	fmt.Println("")
 	fmt.Println("Here are the env vars and command line flags:")
@@ -258,9 +258,9 @@ func (c *CmdParser) printHelp() {
 	}
 }
 
-func (c *CmdParser) getString(_default string, env string, flags []string, desc string) string {
+func (c *CmdParser) GetString(_default string, env string, flags []string, desc string) string {
 
-	if c.isHelpFlagged() {
+	if c.IsHelpFlagged() {
 
 		c.FlagsHelp = append(c.FlagsHelp, FlagMetaHelp{
 			Type:         "string",
