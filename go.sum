@@ -1,3 +1,4 @@
+github.com/google/uuid v1.5.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
 github.com/logrusorgru/aurora v0.0.0-20200102142835-e9ef32dff381/go.mod h1:7rIyQOR62GCctdiQpZ/zOJlFyk6y+94wXzv6RNZgaR4=
 github.com/oresoftware/json-logging v0.0.0-20231214045355-14e52e441216 h1:nGFYp6xn+3CQEIK3rF6rjulLxIztHwwu/it85kMFjWo=
 github.com/oresoftware/json-logging v0.0.0-20231214045355-14e52e441216/go.mod h1:AGhS8TF0eGOmMxqCZ01Zbbr0P+uxTpEccsyGvonR3S8=

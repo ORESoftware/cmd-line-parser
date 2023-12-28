@@ -7,5 +7,5 @@ import (
 
 var appName = os.Getenv("app_name")
 
-var Stdout = json_logging.New(appName, false, "hostname here")
-var Stderr = json_logging.New(appName, false, "hostname here")
+var Stdout = json_logging.New(appName, false, "hostname here", "")
+var Stderr = json_logging.New(appName, false, "hostname here", "")
