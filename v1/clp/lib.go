@@ -8,10 +8,10 @@ import (
 )
 
 func (c *CmdParser) ParseBool(str string) bool {
-	switch str {
-	case "1", "true", "TRUE", "True":
+	switch strings.ToUpper(str) {
+	case "1", "TRUE":
 		return true
-	case "0", "false", "FALSE", "False":
+	case "0", "FALSE":
 		return false
 	}
 	return false
@@ -26,8 +26,8 @@ type FlagMetaHelp struct {
 }
 
 func (c *CmdParser) ParseBoolOptimistic(str string) bool {
-	switch str {
-	case "0", "false", "FALSE", "False":
+	switch strings.ToUpper(str) {
+	case "0", "FALSE":
 		return false
 	}
 	return true
