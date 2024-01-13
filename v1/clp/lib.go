@@ -119,7 +119,7 @@ func (c *CmdParser) GetInt(_default int64, env string, flags []string, desc stri
 
 	if os.Getenv(env) != "" {
 		if z, err := strconv.ParseInt(os.Getenv(env), 10, 64); err != nil {
-			Stdout.Warning("could not parse int from env var:", env)
+			Stdout.Warn("could not parse int from env var:", env)
 		} else {
 			ret = z
 		}
@@ -141,13 +141,13 @@ func (c *CmdParser) GetInt(_default int64, env string, flags []string, desc stri
 		parsed, err := strconv.ParseInt(value, 10, 64)
 
 		if err != nil {
-			Stdout.Warning("could not parse int from command line flag:", v)
+			Stdout.Warn("could not parse int from command line flag:", v)
 			os.Exit(1)
 		}
 
 		if isAlreadySet && ret != parsed {
-			Stdout.Warning("command line flags are mismatched:", flags)
-			Stdout.Warning("command line args were:", os.Args)
+			Stdout.Warn("command line flags are mismatched:", flags)
+			Stdout.Warn("command line args were:", os.Args)
 			os.Exit(1)
 		}
 
@@ -206,7 +206,7 @@ func (c *CmdParser) GetBool(_default bool, env string, flags []string, desc stri
 	for _, v := range flags {
 
 		if v == "" {
-			Stdout.Warning("Empty flag:", flags)
+			Stdout.Warn("Empty flag:", flags)
 			continue
 		}
 
@@ -215,13 +215,13 @@ func (c *CmdParser) GetBool(_default bool, env string, flags []string, desc stri
 
 		if !ok1 {
 			if ok2 {
-				Stdout.Warning("flag was in 1st map but not 2nd map, library error.")
+				Stdout.Warn("flag was in 1st map but not 2nd map, library error.")
 				os.Exit(1)
 			}
 		}
 
 		if len(metaValue.Values) > 1 {
-			Stdout.WarningF("More than one boolean flag at command line: '%v'", v)
+			Stdout.WarnF("More than one boolean flag at command line: '%v'", v)
 		}
 
 		var parsed = true
@@ -232,8 +232,8 @@ func (c *CmdParser) GetBool(_default bool, env string, flags []string, desc stri
 		}
 
 		if isAlreadySet && ret != parsed {
-			Stdout.Warning("command line flags are mismatched:", flags)
-			Stdout.Warning("command line args were:", os.Args)
+			Stdout.Warn("command line flags are mismatched:", flags)
+			Stdout.Warn("command line args were:", os.Args)
 			os.Exit(1)
 		}
 		ret = parsed
@@ -290,7 +290,7 @@ func (c *CmdParser) GetString(_default string, env string, flags []string, desc 
 	for _, v := range flags {
 
 		if v == "" {
-			Stdout.Warning("Flag is an empty string:", flags)
+			Stdout.Warn("Flag is an empty string:", flags)
 			continue
 		}
 
@@ -301,8 +301,8 @@ func (c *CmdParser) GetString(_default string, env string, flags []string, desc 
 		}
 
 		if isAlreadySet && ret != value {
-			Stdout.Warning("command line flags are mismatched:", flags)
-			Stdout.Warning("command line args were:", os.Args)
+			Stdout.Warn("command line flags are mismatched:", flags)
+			Stdout.Warn("command line args were:", os.Args)
 			os.Exit(1)
 		}
 
