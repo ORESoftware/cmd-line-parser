@@ -9,10 +9,8 @@ import (
 
 func (c *CmdParser) ParseBool(str string) bool {
 	switch strings.ToUpper(str) {
-	case "1", "TRUE":
+	case "1", "TRUE", "YES", "YASS":
 		return true
-	case "0", "FALSE":
-		return false
 	}
 	return false
 }
