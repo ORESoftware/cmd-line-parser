@@ -7,5 +7,5 @@ import (
 
 var appName = os.Getenv("app_name")
 
-var Stdout = json_logging.New(appName, "", json_logging.TRACE, []*os.File{os.Stdout})
-var Stderr = json_logging.New(appName, "", json_logging.WARN, []*os.File{os.Stderr})
+var Stdout = json_logging.New(appName, "", json_logging.TRACE, []*json_logging.FileLevel{})
+var Stderr = json_logging.New(appName, "", json_logging.WARN, []*json_logging.FileLevel{})
