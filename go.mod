@@ -2,7 +2,7 @@ module github.com/oresoftware/cmd-line-parser
 
 go 1.21.5
 
-require github.com/oresoftware/json-logging v0.0.0-20240117005820-d484859cb73d
+require github.com/oresoftware/json-logging v0.0.0-20240117051958-da826da2637e
 
 require (
 	github.com/google/uuid v1.5.0 // indirect

@@ -4,6 +4,8 @@ github.com/logrusorgru/aurora v0.0.0-20200102142835-e9ef32dff381 h1:bqDmpDG49ZRn
 github.com/logrusorgru/aurora v0.0.0-20200102142835-e9ef32dff381/go.mod h1:7rIyQOR62GCctdiQpZ/zOJlFyk6y+94wXzv6RNZgaR4=
 github.com/oresoftware/json-logging v0.0.0-20240117005820-d484859cb73d h1:dCvBcpgiVS8WcrPsLCgibwAW4eRUO8fQW1BSQL4otvw=
 github.com/oresoftware/json-logging v0.0.0-20240117005820-d484859cb73d/go.mod h1:6U7eCsko/XQ1L11sbynvDKrkilUWJEsVyqi3E2H7epE=
+github.com/oresoftware/json-logging v0.0.0-20240117051958-da826da2637e h1:WirfMd+mjkNThQ94KQebHUfryxeBR6aPQ7VZm0kr75c=
+github.com/oresoftware/json-logging v0.0.0-20240117051958-da826da2637e/go.mod h1:6U7eCsko/XQ1L11sbynvDKrkilUWJEsVyqi3E2H7epE=
 github.com/yuin/goldmark v1.4.13/go.mod h1:6yULJ656Px+3vBD8DxQVa3kxgyrAnzto9xy5taEt/CY=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/crypto v0.0.0-20210921155107-089bfa567519/go.mod h1:GvvjBRRGRdwPK5ydBHafDWAxML/pGHZbMvKqRZ5+Abc=
