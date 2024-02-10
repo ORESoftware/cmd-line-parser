@@ -222,7 +222,7 @@ func (c *CmdParser) GetBool(_default bool, env string, flags []string, desc stri
 			Stdout.WarnF("More than one boolean flag at command line: '%v'", v)
 		}
 
-		var parsed = true
+		var parsed = _default
 
 		if metaValue.HasEquals {
 			// boolean can only be false if  -v=false or --v=0, etc
