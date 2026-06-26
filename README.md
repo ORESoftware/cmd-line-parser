@@ -6,7 +6,9 @@
 > `remote/modules/github/oresoftware/cmd-line-parser` — make changes here, not in that submodule checkout.
 >
 > On disk: submodule checkout `~/codes/ores/k8s-cluster/remote/modules/github/oresoftware/cmd-line-parser`.
-<!-- END k8s-cluster-submodule-notice --># cmd-line-parser
+<!-- END k8s-cluster-submodule-notice -->
+
+# cmd-line-parser
 
 Small Go helper for reading config from defaults, environment variables, and command-line flags.
 
