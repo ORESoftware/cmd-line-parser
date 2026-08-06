@@ -5,3 +5,6 @@ node_modules
 .vscode
 tmp
 
+temp
+tmp/worktrees
+temp/worktrees
