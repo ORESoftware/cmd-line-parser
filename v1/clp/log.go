@@ -1,8 +1,8 @@
 package clp
 
 import (
-	json_logging "github.com/oresoftware/json-logging/jlog/lib"
 	ll "github.com/oresoftware/json-logging/jlog/level"
+	json_logging "github.com/oresoftware/json-logging/jlog/lib"
 	"os"
 )
 
