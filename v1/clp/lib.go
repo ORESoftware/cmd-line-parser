@@ -7,12 +7,20 @@ import (
 	"strings"
 )
 
-func (c *CmdParser) ParseBool(str string) bool {
+func parseBoolExplicit(str string) (bool, bool) {
 	switch strings.ToUpper(strings.TrimSpace(str)) {
 	case "1", "TRUE", "T", "YES", "Y", "YASS", "ON":
-		return true
+		return true, true
+	case "0", "FALSE", "F", "NO", "N", "OFF":
+		return false, true
+	default:
+		return false, false
 	}
-	return false
+}
+
+func (c *CmdParser) ParseBool(str string) bool {
+	value, ok := parseBoolExplicit(str)
+	return ok && value
 }
 
 type FlagMetaHelp struct {
@@ -23,6 +31,9 @@ type FlagMetaHelp struct {
 	Description  string
 }
 
+// ParseBoolOptimistic is retained for compatibility with callers that
+// intentionally want unknown non-empty values to mean true. Command-line
+// admission uses the closed parseBoolExplicit vocabulary instead.
 func (c *CmdParser) ParseBoolOptimistic(str string) bool {
 	switch strings.ToUpper(strings.TrimSpace(str)) {
 	case "0", "FALSE", "F", "NO", "N", "OFF":
@@ -171,6 +182,12 @@ func exitWithMissingFlagValue(flag string, valueType string) {
 	exitProcess(1)
 }
 
+func exitWithInvalidFlagValue(flag string, valueType string, value string) {
+	Stdout.Warn("invalid", valueType, "value for command line flag:", flag, value)
+	Stdout.Warn("command line args were:", os.Args)
+	exitProcess(1)
+}
+
 func (c *CmdParser) GetInt(_default int64, env string, flags []string, desc string) int64 {
 
 	if c.IsHelpFlagged() {
@@ -256,7 +273,12 @@ func (c *CmdParser) IsHelpFlagged() bool {
 			return true
 		}
 
-		return c.ParseBoolOptimistic(last.Value)
+		parsed, valid := parseBoolExplicit(last.Value)
+		if !valid {
+			exitWithInvalidFlagValue("--help", "boolean", last.Value)
+			return false
+		}
+		return parsed
 	}
 
 	if c.ParseBool(os.Getenv("vibe_help")) {
@@ -315,7 +337,12 @@ func (c *CmdParser) GetBool(defaultValue bool, env string, flags []string, desc 
 			parsed := true
 
 			if occurrence.HasValue {
-				parsed = c.ParseBoolOptimistic(occurrence.Value)
+				var valid bool
+				parsed, valid = parseBoolExplicit(occurrence.Value)
+				if !valid {
+					exitWithInvalidFlagValue(v, "boolean", occurrence.Value)
+					continue
+				}
 			}
 
 			if isAlreadySet && ret != parsed {
